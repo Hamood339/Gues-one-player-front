@@ -1,32 +1,47 @@
-<div class="container">
-  <h1>🎲 Tirage au sort</h1>
+<div class="container py-5">
+  <h1>🎲 Tannal-Ken</h1>
 
-  <!-- Saisie des noms -->
-  <input type="text" [(ngModel)]="namesInput" placeholder="Saisir les noms séparés par des virgules" />
-  <button (click)="draw()">Tirer un nom</button>
-  <button (click)="reset()">Réinitialiser</button>
-
-  <!-- Résultat du tirage -->
-  <div *ngIf="chosenName" class="result">
-    🎉 <strong>{{ chosenName }}</strong> a été tiré !
+  <!-- Input -->
+  <div class="input-group" *ngIf="!drawing">
+    <input type="text" [(ngModel)]="namesInput" placeholder="Saisir les noms séparés par des virgules" />
+    <button class="btn draw" (click)="draw()">Tirer un nom</button>
+    <button class="btn reset" (click)="reset()">Réinitialiser</button>
   </div>
 
-  <!-- Listes -->
-  <div class="lists">
-    <div>
-      <h3>Noms déjà choisis</h3>
-      <ul>
-        <li *ngFor="let name of chosenList">
-          {{ name }}
-          <button (click)="remove(name)">↩ Remettre</button>
-        </li>
-      </ul>
+  <!-- Layout principal -->
+  <div class="main-layout">
+    <!-- Colonne gauche -->
+    <div class="column">
+      <div class="list">
+        <h3>Noms restants</h3>
+        <ul>
+          <li *ngFor="let name of remainingList">{{ name }}</li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h3>Noms restants</h3>
-      <ul>
-        <li *ngFor="let name of remainingList">{{ name }}</li>
-      </ul>
+
+    <!-- Colonne centre -->
+    <div class="center-column">
+      <div *ngIf="drawing" class="spinner">
+        <div class="circle"></div>
+        <div class="spinner-text">Tirage...</div>
+      </div>
+      <div *ngIf="chosenName" class="result">
+        🎉 <strong>{{ chosenName }}</strong> a été tiré !
+      </div>
+    </div>
+
+    <!-- Colonne droite -->
+    <div class="column">
+      <div class="list">
+        <h3>Noms déjà choisis</h3>
+        <ul>
+          <li *ngFor="let name of chosenList">
+            {{ name }}
+            <button class="btn remove" (click)="remove(name)">↩ Remettre</button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
