@@ -1,0 +1,44 @@
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.result {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: green;
+}
+
+.lists {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.lists div {
+  width: 45%;
+  text-align: left;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>🎲 Tirage au sort</h1>
+
+  <!-- Saisie des noms -->
+  <input type="text" [(ngModel)]="namesInput" placeholder="Saisir les noms séparés par des virgules" />
+  <button (click)="draw()">Tirer un nom</button>
+  <button (click)="reset()">Réinitialiser</button>
+
+  <!-- Résultat du tirage -->
+  <div *ngIf="chosenName" class="result">
+    🎉 <strong>{{ chosenName }}</strong> a été tiré !
+  </div>
+
+  <!-- Listes -->
+  <div class="lists">
+    <div>
+      <h3>Noms déjà choisis</h3>
+      <ul>
+        <li *ngFor="let name of chosenList">
+          {{ name }}
+          <button (click)="remove(name)">↩ Remettre</button>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>Noms restants</h3>
+      <ul>
+        <li *ngFor="let name of remainingList">{{ name }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
